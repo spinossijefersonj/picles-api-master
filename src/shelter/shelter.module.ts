@@ -1,21 +1,20 @@
 import { Module } from '@nestjs/common';
 import { ShelterController } from './shelter.controller';
-import ShelterTokens from './shelter.tokens';
-import GetShelterDetailsUseCase from './usecases/get.shelter.details.usecase';
+import ShelterToken from './shelter.tokens';
 import GetShelterDetailsUseCaseOutput from './usecases/dtos/get.shelter.details.usecase.output';
-
+import GetShelterDetailsUseCase from './usecases/get.shelter.details.usecase';
+import { Shelter, shelterSchema } from './schemas/shelter.schema';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Shelter, ShelterSchima } from '@nestjs/mongoose';
 
 @Module({
   controllers: [ShelterController],
 
-  imports: [
-    MongooseModule.forFeature([{name: Shelter.name, schema: ShelterSchima}])
+  imports:[
+    MongooseModule.forFeature([{name: Shelter.name, schema: shelterSchema}])
   ],
   providers: [
   {
-	provide: ShelterTokens.getShelderDetailsUseCase,
+	provide: ShelterToken.getShelderDetailsUseCase,
 	useClass: GetShelterDetailsUseCase
   }
 ]
