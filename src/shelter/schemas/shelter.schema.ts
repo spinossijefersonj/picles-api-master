@@ -18,6 +18,7 @@ export class Shelter{
     createdAT: Date
     @Prop({Requiret: true})
     update: Date
+	updateAt: Date
 }
 
 export const ShelterSchimas = SchemaFactory.createForClass(Shelter)
