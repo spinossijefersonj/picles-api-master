@@ -25,7 +25,7 @@ import { ShelterRepository } from './shelter.repository';
   {
     provide: ShelterToken.shelterRepository,
     useClass: ShelterRepository,
-  }
+  },
   {
     provide: ShelterTokens.updateShelderDetailsUseCase,
     useClass: UpdateShelterDetailsUseCase

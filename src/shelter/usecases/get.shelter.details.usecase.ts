@@ -23,7 +23,7 @@ implements IUseCase<null, GetShelterDetailsUseCaseOutput>{
 			shelterWhatsApp: shelter.whatsApp,
 			createdAt: shelter.createdAT,
 			updatedAt: shelter.updateAt,
-	}):
+	});
 	}
 }
 	

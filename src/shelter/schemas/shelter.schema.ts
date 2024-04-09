@@ -19,6 +19,11 @@ export class Shelter{
     @Prop({Requiret: true})
     update: Date
 	updateAt: Date
+    static phone: string
+    static whatsApp: string
+    static email: string
+    static updatedAt: any
+    static createdAt: any
 }
 
 export const ShelterSchimas = SchemaFactory.createForClass(Shelter)
