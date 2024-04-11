@@ -3,7 +3,7 @@ import { PetController } from './pet.controller';
 import PetTokens from './pet.tokens';
 import CreatePetUseCase from './usecases/create.pet.usecase';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Pet, PetSchema } from './schemas/pet.schemas';
+import { Pet, PetSchema } from './schemas/pet.schema';
 import petRepository from './pet.repository';
 import GetPetByIdUsecase from './usecases/get.pet.by.id.usecase';
 
@@ -23,6 +23,11 @@ import GetPetByIdUsecase from './usecases/get.pet.by.id.usecase';
 		provide: PetTokens.getPetByIdUseCase,
 		useClass: GetPetByIdUsecase  
 	},
+	,
+	{
+		provide: PetTokens.deletePetByIdUseCase,
+		useClass: deletePetByIdUsecase  
+	}
 	{
 		provide: PetTokens.petRepository,
 		useClass: petRepository

@@ -1,9 +1,12 @@
 import { InjectModel } from "@nestjs/mongoose";
 import IPetRepository from "./interfaces/pet.repository.interface";
 import { Model } from "mongoose";
-import { Pet } from "./schemas/pet.schemas";
+import { Pet } from "./schemas/pet.schema";
 
 export default class PetRepository implements IPetRepository {
+    deleteById(id: any) {
+        throw new Error("Method not implemented.");
+    }
 
     constructor(
         @InjectModel(Pet.name)
@@ -33,5 +36,10 @@ export default class PetRepository implements IPetRepository {
         }
         )
     }
+
+    async DeletePetByIdUseCase(id: string): Promise<void>{
+        await this.petModel.findByIdAndDelete(id)
+    }
+
 
 }

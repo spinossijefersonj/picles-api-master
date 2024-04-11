@@ -6,7 +6,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import PetTokens from "../pet.tokens";
 import IPetRepository from "../interfaces/pet.repository.interface";
 import { promises } from "dns";
-import { Pet } from "../schemas/pet.schemas";
+import { Pet } from "../schemas/pet.schema";
 import PetNotFoundError from "src/domain/errors/pet.not.found.error";
 
 @Injectable()
