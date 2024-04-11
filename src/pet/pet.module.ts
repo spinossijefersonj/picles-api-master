@@ -20,6 +20,10 @@ import GetPetByIdUsecase from './usecases/get.pet.by.id.usecase';
 		useClass: GetPetByIdUsecase 
 	},
 	{
+		provide: PetTokens.getPetByIdUseCase,
+		useClass: GetPetByIdUsecase  
+	},
+	{
 		provide: PetTokens.petRepository,
 		useClass: petRepository
 	}
