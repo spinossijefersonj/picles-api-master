@@ -1,5 +1,5 @@
 import CreatePetControllerInput from "src/pet/dtos/create.pet.controller.input";
-import CreatePetUseCaseInput from "./create.pet.usecase.input";
+import CreatePetUseCaseInput from "../usecases/dtos/create.pet.usecase.input";
 
 export default class UpdatePetByIdUseCaseInput extends CreatePetUseCaseInput {
     id: string

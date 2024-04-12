@@ -8,6 +8,8 @@ import { Pet, PetSchema } from './schemas/pet.schema';
 import GetPetByIdUseCase from './usecases/get.pet.by.id.usecase';
 import UpdatePetByIdUseCase from './usecases/update.pet.by.id.usecase';
 import DeletePetByIdUseCase from './usecases/delete.pet.by.id.usecase';
+import fileService from 'src/file.service';
+import AppTokens from 'src/app.tokens';
 
 @Module({
   controllers: [PetController],
@@ -32,6 +34,12 @@ import DeletePetByIdUseCase from './usecases/delete.pet.by.id.usecase';
     {
       provide: PetTokens.petRepository,
       useClass: PetRepository
+    },
+    {
+      {
+        provide: AppTokens.fileService,
+        useClass: fileService
+      }
     }
   ]
 })

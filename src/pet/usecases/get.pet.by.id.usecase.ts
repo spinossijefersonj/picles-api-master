@@ -11,6 +11,7 @@ import PetNotFoundError from "src/domain/errors/pet.not.found.error";
 
 @Injectable()
 export default class GetPetByIdUsecase implements IUseCase<GetPetByIdUsecaseInput, GetPetByIdUsecaseOutput> {
+    fileService: any;
 
     constructor(
         @Inject(PetTokens.petRepository)
@@ -24,6 +25,9 @@ export default class GetPetByIdUsecase implements IUseCase<GetPetByIdUsecaseInpu
             throw new PetNotFoundError()
         }
 
+        const petPhoto = !!pet.photo ? (await this.fileService.readFile(pet.photo)).toString
+        ('base64') : null;
+
         return new GetPetByIdUsecaseOutput({
             id: pet._id,
             name: pet.name,
@@ -31,7 +35,7 @@ export default class GetPetByIdUsecase implements IUseCase<GetPetByIdUsecaseInpu
             size: pet.size,
             gender: pet.gender,
             bio: pet.bio,
-            photo: null,
+            photo: petPhoto,
             createdAt: pet.createdAt,
             updatedAt: pet.updatedAt
         });

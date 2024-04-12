@@ -3,7 +3,7 @@ import GetShelterDetailsUseCaseOutput from "./dtos/get.shelter.details.usercase.
 import { Inject } from "@nestjs/common"
 import ShelterTokens from "../shelter.tokens"
 import { ShelterRepository } from "../shelter.repository"
-import IShelterRepository from "../interfaces/shelter.repository.interfaces"
+import IShelterRepository from "../../interfaces/shelter.repository.interfaces"
 import shelterTokens from "../shelter.tokens"
 
 export default class GetShelterDetailsUseCase
