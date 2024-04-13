@@ -4,7 +4,7 @@ import GetShelterDetailsUseCaseOutput from "./dtos/get.shelter.details.usercase.
 import { promises } from "dns";
 import UpdateShelterDetailsUseCaseInput from "./dtos/update.shelter.details.usecase.input";
 import UpdateShelterDetailsUseCaseOutput from "./dtos/update.shelter.details.usecase.output";
-import { ShelterRepository } from "../shelter.repository";
+import ShelterRepository from "../shelter.repository";
 import { Shelter } from "../schemas/shelter.schema";
 import ShelterTokens from "../shelter.tokens";
 

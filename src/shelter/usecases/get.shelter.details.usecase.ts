@@ -2,8 +2,8 @@ import { IUseCase } from "src/domain/iusecase.interface"
 import GetShelterDetailsUseCaseOutput from "./dtos/get.shelter.details.usercase.output"
 import { Inject } from "@nestjs/common"
 import ShelterTokens from "../shelter.tokens"
-import { ShelterRepository } from "../shelter.repository"
-import IShelterRepository from "../../interfaces/shelter.repository.interfaces"
+import ShelterRepository from "../shelter.repository";
+import IShelterRepository from "../interfaces/shelter.repository.interface"
 import shelterTokens from "../shelter.tokens"
 
 export default class GetShelterDetailsUseCase

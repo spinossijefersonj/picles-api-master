@@ -1,4 +1,3 @@
-
 import { IUseCase } from "src/domain/iusecase.interface";
 import DeletePetByIdUseCaseInput from "./dtos/delete.pet.by.id.usecase.input";
 import DeletePetByIdUseCaseOutput from "./dtos/delete.pet.by.id.usecase.output";

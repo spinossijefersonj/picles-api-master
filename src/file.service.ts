@@ -8,4 +8,3 @@ export default class FileService implements IFileService {
     return fs.readFileSync(path);
   }
 }
-}

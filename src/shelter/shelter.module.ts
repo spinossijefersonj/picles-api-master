@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import ShelterTokens from './shelter.tokens';
 import UpdateShelterControllerInput from './usecases/dtos/update.shelter.details.usecase.output';
 import UpdateShelterDetailsUseCase from './usecases/update.shelter.details.usecase';
-import { ShelterRepository } from './shelter.repository';
+import ShelterRepository from "./shelter.repository";
 
 @Module({
   controllers: [ShelterController],

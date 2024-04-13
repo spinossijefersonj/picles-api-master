@@ -1,34 +1,35 @@
 import { IUseCase } from "src/domain/iusecase.interface";
-import GetPetByIdUsecaseInput from "../usecases/dtos/get.pet.by.id.usecase.input";
-import GetPetByIdUsecaseOutput from "../usecases/dtos/get.pet.by.id.usecase.output";
-import { constrainedMemory } from "process";
+import GetPetByIdUseCaseInput from "./dtos/get.pet.by.id.usecase.input";
+import GetPetByIdUseCaseOutput from "./dtos/get.pet.by.id.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
 import PetTokens from "../pet.tokens";
 import IPetRepository from "../interfaces/pet.repository.interface";
-import { promises } from "dns";
 import { Pet } from "../schemas/pet.schema";
 import PetNotFoundError from "src/domain/errors/pet.not.found.error";
+import AppTokens from "src/app.tokens";
+import IFileService from "src/interfaces/file.service.interface";
 
 @Injectable()
-export default class GetPetByIdUsecase implements IUseCase<GetPetByIdUsecaseInput, GetPetByIdUsecaseOutput> {
-    fileService: any;
-
+export default class GetPetByIdUseCase implements IUseCase<GetPetByIdUseCaseInput, GetPetByIdUseCaseOutput> {
+    
     constructor(
         @Inject(PetTokens.petRepository)
-        private readonly petRepository: IPetRepository
-    ){}
+        private readonly petRepository: IPetRepository,
 
-   async run(input: GetPetByIdUsecaseInput): Promise<GetPetByIdUsecaseOutput> {
+        @Inject(AppTokens.fileService)
+        private readonly fileService: IFileService
+    ) { }
+    
+    async run(input: GetPetByIdUseCaseInput): Promise<GetPetByIdUseCaseOutput> {
         const pet = await this.getPetById(input.id)
 
-        if(pet === null){
+        if (pet === null) {
             throw new PetNotFoundError()
         }
 
-        const petPhoto = !!pet.photo ? (await this.fileService.readFile(pet.photo)).toString
-        ('base64') : null;
+        const petPhoto = !!pet.photo ? (await this.fileService.readFile(pet.photo)).toString('base64') : null;
 
-        return new GetPetByIdUsecaseOutput({
+        return new GetPetByIdUseCaseOutput({
             id: pet._id,
             name: pet.name,
             type: pet.type,
@@ -37,11 +38,11 @@ export default class GetPetByIdUsecase implements IUseCase<GetPetByIdUsecaseInpu
             bio: pet.bio,
             photo: petPhoto,
             createdAt: pet.createdAt,
-            updatedAt: pet.updatedAt
+            updatedAt: pet.updatedAt,
         });
     }
-    
-    private async getPetById(id: string): Promise<Pet>{
+
+    private async getPetById(id: string): Promise<Pet> {
         try {
             return await this.petRepository.getById(id)
         } catch (error) {
